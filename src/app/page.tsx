@@ -28,7 +28,7 @@ export default function Home() {
       <div className="h-full p-2 sm:p-4">
         <div className="h-full max-w-screen-2xl mx-auto">
           {/* Mobile Layout (Stacked) */}
-          <div className="flex flex-col lg:hidden h-full space-y-4">
+          <div className="flex flex-col lg:hidden h-full">
             {/* Mobile Header */}
             <div className="flex items-center justify-between p-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-2xl border border-border/50 shadow-lg">
               <div className="flex items-center gap-2">
@@ -39,33 +39,17 @@ export default function Home() {
                 </div>
                 <div className="text-lg font-bold text-foreground">API Testing</div>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
-                </div>
-              </div>
             </div>
             
-            {/* Mobile Content Area */}
-            <div className="flex-1 flex flex-col space-y-4 overflow-hidden">
-              {/* Chat Panel - Main Content */}
-              <div className="flex-1 min-h-0">
-                <ChatPanel 
-                  messages = {messages}
-                  setMessages = {setMessages}
-                  requestDraft = {requestDraft}
-                  setRequestDraft = {setRequestDraft}
-                  setResponseDraft = {setResposeDraft}
-                />
-              </div>
-              
-              {/* Bottom Section - Sidebar and Inspector */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-80">
-                <Sidebar />
-                <Inspector requestDraft={requestDraft} responseDraft={responseDraft}/>
-              </div>
+            {/* Mobile Content Area - Only Chat Panel */}
+            <div className="flex-1 mt-4 overflow-hidden">
+              <ChatPanel 
+                messages = {messages}
+                setMessages = {setMessages}
+                requestDraft = {requestDraft}
+                setRequestDraft = {setRequestDraft}
+                setResponseDraft = {setResposeDraft}
+              />
             </div>
           </div>
           
