@@ -75,6 +75,13 @@ export default function Home() {
           </div>
         </div>
       </div>
+      
+      {/* Footer */}
+      <footer className="py-4 px-4 text-center border-t border-border/20 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
+        <div className="text-xs sm:text-sm text-muted-foreground">
+          🚀 Website maintained by <span className="font-semibold text-foreground">Adi</span> | Built with ❤️ and Next.js
+        </div>
+      </footer>
     </main>
   );
 

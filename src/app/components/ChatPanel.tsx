@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type Msg = { role: "user" | "assistant"; text: string };
 
@@ -18,6 +18,30 @@ export default function ChatPanel({
 }) {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isLoading]);
+
+  const clearChat = () => {
+    setMessages([]);
+    setInput("");
+  };
+
+  const handleExampleClick = (example: string) => {
+    setInput(example);
+    // Auto-focus the input
+    const inputElement = document.querySelector('input[type="text"]') as HTMLInputElement;
+    if (inputElement) {
+      inputElement.focus();
+    }
+  };
 
   const add = (m: Msg) => setMessages((prev) => [...prev, m]);
 
@@ -148,6 +172,16 @@ export default function ChatPanel({
           </div>
         </div>
         <div className="flex items-center gap-2">
+          {/* Clear Chat Button */}
+          <button
+            onClick={clearChat}
+            className="p-2 rounded-xl hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors duration-200 group"
+            title="Clear chat"
+          >
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 group-hover:text-red-600 dark:group-hover:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+          </button>
           <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-lg">
             <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -157,7 +191,7 @@ export default function ChatPanel({
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto py-4 pr-2 max-h-[calc(100vh-140px)] scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted-foreground/20 hover:scrollbar-thumb-muted-foreground/40">
+      <div ref={messagesContainerRef} className="flex-1 overflow-y-auto py-4 pr-2 max-h-[calc(100vh-140px)] scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted-foreground/20 hover:scrollbar-thumb-muted-foreground/40">
         {messages.length === 0 && (
           <div className="text-center py-8 sm:py-12 animate-fade-in">
             <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-8 rounded-3xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-2xl">
@@ -171,9 +205,13 @@ export default function ChatPanel({
             </div>
             
             {/* Example Card - Simplified for mobile */}
-            <div className="p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 border border-blue-200 dark:border-blue-800 max-w-sm mx-auto">
+            <div 
+              onClick={() => handleExampleClick("Test the JSONPlaceholder API")}
+              className="p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 border border-blue-200 dark:border-blue-800 max-w-sm mx-auto cursor-pointer hover:shadow-lg transition-all duration-300 hover-lift"
+            >
               <div className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300 mb-2">💡 Try:</div>
-              <div className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-mono bg-white/50 dark:bg-slate-800/50 rounded-lg px-2 sm:px-3 py-2 text-center">"Test the API"</div>
+              <div className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-mono bg-white/50 dark:bg-slate-800/50 rounded-lg px-2 sm:px-3 py-2 text-center">"Test the JSONPlaceholder API"</div>
+              <div className="text-xs text-blue-500 dark:text-blue-400 mt-2 text-center">Click to use this example</div>
             </div>
           </div>
         )}
@@ -234,6 +272,9 @@ export default function ChatPanel({
             </div>
           </div>
         )}
+        
+        {/* Hidden div for scrolling reference */}
+        <div ref={messagesEndRef} />
       </div>
 
       {/* Input Section */}
