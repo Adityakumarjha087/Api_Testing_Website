@@ -133,33 +133,26 @@ export default function ChatPanel({
   };
 
   return (
-    <div className="h-full rounded-2xl border border-border/50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl shadow-xl p-6 flex flex-col animate-fade-in">
+    <div className="h-full rounded-2xl border border-border/50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl shadow-xl p-3 sm:p-6 flex flex-col animate-fade-in">
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-border/50">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="flex items-center justify-between pb-3 sm:pb-4 border-b border-border/50">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
             </svg>
           </div>
           <div>
-            <div className="text-xl font-bold text-foreground">API Testing Assistant</div>
-            <div className="text-xs text-muted-foreground">Powered by AI</div>
+            <div className="text-lg sm:text-xl font-bold text-foreground hidden sm:block">API Testing Assistant</div>
+            <div className="text-sm font-bold text-foreground sm:hidden">Chat</div>
           </div>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 text-xs bg-green-50 text-green-700 px-3 py-1.5 rounded-full border border-green-200 font-semibold">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            Ready
-          </div>
-          <button
-            onClick={() => setMessages([])}
-            className="btn btn-ghost text-xs px-3 py-1.5 hover:bg-red-50 hover:text-red-600 hover:border-red-200 rounded-xl"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-lg">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-          </button>
+          </div>
         </div>
       </div>
 
@@ -172,39 +165,39 @@ export default function ChatPanel({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <div className="text-2xl font-bold text-foreground mb-3">API Testing Assistant</div>
-            <div className="text-sm text-muted-foreground mb-8 max-w-md mx-auto">
+            <div className="text-xl sm:text-2xl font-bold text-foreground mb-2 sm:mb-3">API Testing Assistant</div>
+            <div className="text-xs sm:text-sm text-muted-foreground mb-6 sm:mb-8 max-w-md mx-auto">
               Your intelligent companion for API testing and development. Test endpoints, analyze responses, and debug issues with natural language.
             </div>
             
             {/* Feature Cards */}
-            <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto mb-8">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 border border-blue-200 dark:border-blue-800 hover-lift cursor-pointer transition-all duration-300">
-                <div className="text-2xl mb-2">🔍</div>
-                <div className="text-sm font-semibold text-foreground mb-1">Test APIs</div>
-                <div className="text-xs text-muted-foreground">Natural language requests</div>
+            <div className="grid grid-cols-2 gap-2 sm:gap-4 max-w-lg mx-auto mb-6 sm:mb-8">
+              <div className="p-2 sm:p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 border border-blue-200 dark:border-blue-800 hover-lift cursor-pointer transition-all duration-300">
+                <div className="text-lg sm:text-2xl mb-1 sm:mb-2">🔍</div>
+                <div className="text-xs sm:text-sm font-semibold text-foreground mb-1">Test APIs</div>
+                <div className="text-xs text-muted-foreground hidden sm:block">Natural language requests</div>
               </div>
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 border border-green-200 dark:border-green-800 hover-lift cursor-pointer transition-all duration-300">
-                <div className="text-2xl mb-2">📊</div>
-                <div className="text-sm font-semibold text-foreground mb-1">Analyze</div>
-                <div className="text-xs text-muted-foreground">Response insights</div>
+              <div className="p-2 sm:p-4 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 border border-green-200 dark:border-green-800 hover-lift cursor-pointer transition-all duration-300">
+                <div className="text-lg sm:text-2xl mb-1 sm:mb-2">📊</div>
+                <div className="text-xs sm:text-sm font-semibold text-foreground mb-1">Analyze</div>
+                <div className="text-xs text-muted-foreground hidden sm:block">Response insights</div>
               </div>
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/30 dark:to-amber-900/30 border border-orange-200 dark:border-orange-800 hover-lift cursor-pointer transition-all duration-300">
-                <div className="text-2xl mb-2">🐛</div>
-                <div className="text-sm font-semibold text-foreground mb-1">Debug</div>
-                <div className="text-xs text-muted-foreground">HTTP troubleshooting</div>
+              <div className="p-2 sm:p-4 rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/30 dark:to-amber-900/30 border border-orange-200 dark:border-orange-800 hover-lift cursor-pointer transition-all duration-300">
+                <div className="text-lg sm:text-2xl mb-1 sm:mb-2">🐛</div>
+                <div className="text-xs sm:text-sm font-semibold text-foreground mb-1">Debug</div>
+                <div className="text-xs text-muted-foreground hidden sm:block">HTTP troubleshooting</div>
               </div>
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 border border-purple-200 dark:border-purple-800 hover-lift cursor-pointer transition-all duration-300">
-                <div className="text-2xl mb-2">📝</div>
-                <div className="text-sm font-semibold text-foreground mb-1">Generate</div>
-                <div className="text-xs text-muted-foreground">Test cases</div>
+              <div className="p-2 sm:p-4 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 border border-purple-200 dark:border-purple-800 hover-lift cursor-pointer transition-all duration-300">
+                <div className="text-lg sm:text-2xl mb-1 sm:mb-2">📝</div>
+                <div className="text-xs sm:text-sm font-semibold text-foreground mb-1">Generate</div>
+                <div className="text-xs text-muted-foreground hidden sm:block">Test cases</div>
               </div>
             </div>
             
             {/* Example Card */}
-            <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 border border-blue-200 dark:border-blue-800 max-w-md mx-auto">
-              <div className="text-sm font-semibold text-blue-700 dark:text-blue-300 mb-2">💡 Try this example:</div>
-              <div className="text-sm text-blue-600 dark:text-blue-400 font-mono bg-white/50 dark:bg-slate-800/50 rounded-lg px-3 py-2">"Test the JSONPlaceholder API"</div>
+            <div className="p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 border border-blue-200 dark:border-blue-800 max-w-md mx-auto">
+              <div className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300 mb-2">💡 Try this example:</div>
+              <div className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-mono bg-white/50 dark:bg-slate-800/50 rounded-lg px-2 sm:px-3 py-2 text-center sm:text-left">"Test the JSONPlaceholder API"</div>
             </div>
           </div>
         )}
@@ -226,7 +219,7 @@ export default function ChatPanel({
                   </div>
                 )}
                 <div
-                  className={`rounded-2xl px-5 py-4 text-sm whitespace-pre-wrap break-words shadow-lg hover:shadow-xl transition-all duration-300 ${
+                  className={`rounded-2xl px-3 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm whitespace-pre-wrap break-words shadow-lg hover:shadow-xl transition-all duration-300 ${
                     m.role === "user"
                       ? "bg-gradient-to-br from-blue-500 to-blue-600 text-white"
                       : "bg-white dark:bg-slate-800 border border-border/50 text-foreground"
@@ -255,7 +248,7 @@ export default function ChatPanel({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <div className="bg-white dark:bg-slate-800 border border-border/50 rounded-2xl px-5 py-4 text-sm shadow-lg">
+              <div className="bg-white dark:bg-slate-800 border border-border/50 rounded-2xl px-3 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm shadow-lg">
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce"></div>
                   <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -272,7 +265,7 @@ export default function ChatPanel({
         <div className="flex gap-3">
           <div className="relative flex-1">
             <input
-              className="w-full rounded-2xl border border-border/50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm px-5 py-4 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm hover:shadow-md"
+              className="w-full rounded-2xl border border-border/50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm px-3 sm:px-5 py-3 sm:py-4 pr-10 sm:pr-12 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm hover:shadow-md"
               placeholder="Describe API test or endpoint..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
