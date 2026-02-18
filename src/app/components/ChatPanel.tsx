@@ -133,7 +133,7 @@ export default function ChatPanel({
   };
 
   return (
-    <div className="h-full rounded-2xl border border-border/50 bg-white/80 backdrop-blur-xl shadow-xl p-6 flex flex-col animate-fade-in">
+    <div className="h-full rounded-2xl border border-border/50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl shadow-xl p-6 flex flex-col animate-fade-in">
       {/* Header */}
       <div className="flex items-center justify-between pb-4 border-b border-border/50">
         <div className="flex items-center gap-3">
@@ -179,22 +179,22 @@ export default function ChatPanel({
             
             {/* Feature Cards */}
             <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto mb-8">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 hover-lift cursor-pointer transition-all duration-300">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 border border-blue-200 dark:border-blue-800 hover-lift cursor-pointer transition-all duration-300">
                 <div className="text-2xl mb-2">🔍</div>
                 <div className="text-sm font-semibold text-foreground mb-1">Test APIs</div>
                 <div className="text-xs text-muted-foreground">Natural language requests</div>
               </div>
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 hover-lift cursor-pointer transition-all duration-300">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 border border-green-200 dark:border-green-800 hover-lift cursor-pointer transition-all duration-300">
                 <div className="text-2xl mb-2">📊</div>
                 <div className="text-sm font-semibold text-foreground mb-1">Analyze</div>
                 <div className="text-xs text-muted-foreground">Response insights</div>
               </div>
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 hover-lift cursor-pointer transition-all duration-300">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/30 dark:to-amber-900/30 border border-orange-200 dark:border-orange-800 hover-lift cursor-pointer transition-all duration-300">
                 <div className="text-2xl mb-2">🐛</div>
                 <div className="text-sm font-semibold text-foreground mb-1">Debug</div>
                 <div className="text-xs text-muted-foreground">HTTP troubleshooting</div>
               </div>
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 hover-lift cursor-pointer transition-all duration-300">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 border border-purple-200 dark:border-purple-800 hover-lift cursor-pointer transition-all duration-300">
                 <div className="text-2xl mb-2">📝</div>
                 <div className="text-sm font-semibold text-foreground mb-1">Generate</div>
                 <div className="text-xs text-muted-foreground">Test cases</div>
@@ -202,9 +202,9 @@ export default function ChatPanel({
             </div>
             
             {/* Example Card */}
-            <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 max-w-md mx-auto">
-              <div className="text-sm font-semibold text-blue-700 mb-2">💡 Try this example:</div>
-              <div className="text-sm text-blue-600 font-mono bg-white/50 rounded-lg px-3 py-2">"Test the JSONPlaceholder API"</div>
+            <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 border border-blue-200 dark:border-blue-800 max-w-md mx-auto">
+              <div className="text-sm font-semibold text-blue-700 dark:text-blue-300 mb-2">💡 Try this example:</div>
+              <div className="text-sm text-blue-600 dark:text-blue-400 font-mono bg-white/50 dark:bg-slate-800/50 rounded-lg px-3 py-2">"Test the JSONPlaceholder API"</div>
             </div>
           </div>
         )}
@@ -229,7 +229,7 @@ export default function ChatPanel({
                   className={`rounded-2xl px-5 py-4 text-sm whitespace-pre-wrap break-words shadow-lg hover:shadow-xl transition-all duration-300 ${
                     m.role === "user"
                       ? "bg-gradient-to-br from-blue-500 to-blue-600 text-white"
-                      : "bg-white border border-border/50 text-foreground"
+                      : "bg-white dark:bg-slate-800 border border-border/50 text-foreground"
                   }`}
                 >
                   {m.text}
@@ -255,7 +255,7 @@ export default function ChatPanel({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <div className="bg-white border border-border/50 rounded-2xl px-5 py-4 text-sm shadow-lg">
+              <div className="bg-white dark:bg-slate-800 border border-border/50 rounded-2xl px-5 py-4 text-sm shadow-lg">
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce"></div>
                   <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -272,7 +272,7 @@ export default function ChatPanel({
         <div className="flex gap-3">
           <div className="relative flex-1">
             <input
-              className="w-full rounded-2xl border border-border/50 bg-white/80 backdrop-blur-sm px-5 py-4 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm hover:shadow-md"
+              className="w-full rounded-2xl border border-border/50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm px-5 py-4 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-sm hover:shadow-md"
               placeholder="Describe API test or endpoint..."
               value={input}
               onChange={(e) => setInput(e.target.value)}

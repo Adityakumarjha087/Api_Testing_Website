@@ -7,21 +7,21 @@ function pretty(v:any){
 }
 
 function getStatusColor(status: number | null) {
-  if (!status) return 'text-gray-500';
-  if (status >= 200 && status < 300) return 'text-green-600';
-  if (status >= 300 && status < 400) return 'text-yellow-600';
-  if (status >= 400 && status < 500) return 'text-orange-600';
-  if (status >= 500) return 'text-red-600';
-  return 'text-gray-600';
+  if (!status) return 'text-gray-500 dark:text-gray-400';
+  if (status >= 200 && status < 300) return 'text-green-600 dark:text-green-400';
+  if (status >= 300 && status < 400) return 'text-yellow-600 dark:text-yellow-400';
+  if (status >= 400 && status < 500) return 'text-orange-600 dark:text-orange-400';
+  if (status >= 500) return 'text-red-600 dark:text-red-400';
+  return 'text-gray-600 dark:text-gray-400';
 }
 
 function getStatusBg(status: number | null) {
-  if (!status) return 'bg-gray-100';
-  if (status >= 200 && status < 300) return 'bg-green-100';
-  if (status >= 300 && status < 400) return 'bg-yellow-100';
-  if (status >= 400 && status < 500) return 'bg-orange-100';
-  if (status >= 500) return 'bg-red-100';
-  return 'bg-gray-100';
+  if (!status) return 'bg-gray-100 dark:bg-gray-800';
+  if (status >= 200 && status < 300) return 'bg-green-100 dark:bg-green-900/30';
+  if (status >= 300 && status < 400) return 'bg-yellow-100 dark:bg-yellow-900/30';
+  if (status >= 400 && status < 500) return 'bg-orange-100 dark:bg-orange-900/30';
+  if (status >= 500) return 'bg-red-100 dark:bg-red-900/30';
+  return 'bg-gray-100 dark:bg-gray-800';
 }
 
 export default function Inspector({requestDraft, responseDraft} : {
@@ -29,7 +29,7 @@ export default function Inspector({requestDraft, responseDraft} : {
     responseDraft : any;
 } ) {
   return (
-    <div className="h-full rounded-2xl border border-border/50 bg-white/80 backdrop-blur-xl shadow-xl p-6 flex flex-col gap-6 animate-fade-in">
+    <div className="h-full rounded-2xl border border-border/50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl shadow-xl p-6 flex flex-col gap-6 animate-fade-in">
       {/* Request Section */}
       <div className="space-y-4">
         <div className="flex items-center gap-3 pb-3 border-b border-border/50">
@@ -46,13 +46,13 @@ export default function Inspector({requestDraft, responseDraft} : {
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-2">
               <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Method</label>
-              <div className="px-3 py-2 bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-xl font-mono text-sm font-semibold text-blue-700">
+              <div className="px-3 py-2 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 border border-blue-200 dark:border-blue-800 rounded-xl font-mono text-sm font-semibold text-blue-700 dark:text-blue-300">
                 {requestDraft.method}
               </div>
             </div>
             <div className="space-y-2">
               <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">URL</label>
-              <div className="px-3 py-2 bg-gradient-to-r from-slate-50 to-gray-50 border border-slate-200 rounded-xl font-mono text-sm text-slate-700 truncate">
+              <div className="px-3 py-2 bg-gradient-to-r from-slate-50 to-gray-50 dark:from-slate-800 dark:to-gray-800 border border-slate-200 dark:border-slate-700 rounded-xl font-mono text-sm text-slate-700 dark:text-slate-300 truncate">
                 {requestDraft.url || "-"}
               </div>
             </div>
@@ -62,7 +62,7 @@ export default function Inspector({requestDraft, responseDraft} : {
           <div className="space-y-2">
             <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Headers</label>
             <div className="relative">
-              <pre className="text-xs bg-gradient-to-br from-slate-50 to-gray-50 border border-slate-200 rounded-xl p-4 overflow-auto font-mono leading-relaxed shadow-inner">
+              <pre className="text-xs bg-gradient-to-br from-slate-50 to-gray-50 dark:from-slate-800 dark:to-gray-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 overflow-auto font-mono leading-relaxed shadow-inner text-slate-700 dark:text-slate-300">
                 {pretty(requestDraft.headers)}
               </pre>
             </div>
@@ -72,7 +72,7 @@ export default function Inspector({requestDraft, responseDraft} : {
           <div className="space-y-2">
             <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Body</label>
             <div className="relative">
-              <pre className="text-xs bg-gradient-to-br from-slate-50 to-gray-50 border border-slate-200 rounded-xl p-4 overflow-auto font-mono leading-relaxed shadow-inner">
+              <pre className="text-xs bg-gradient-to-br from-slate-50 to-gray-50 dark:from-slate-800 dark:to-gray-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 overflow-auto font-mono leading-relaxed shadow-inner text-slate-700 dark:text-slate-300">
                 {pretty(requestDraft.body)}
               </pre>
             </div>
@@ -104,7 +104,7 @@ export default function Inspector({requestDraft, responseDraft} : {
           <div className="flex-1 space-y-2 min-h-0">
             <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Body</label>
             <div className="relative h-full">
-              <pre className="h-full text-xs bg-gradient-to-br from-slate-50 to-gray-50 border border-slate-200 rounded-xl p-4 overflow-auto font-mono leading-relaxed shadow-inner">
+              <pre className="h-full text-xs bg-gradient-to-br from-slate-50 to-gray-50 dark:from-slate-800 dark:to-gray-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 overflow-auto font-mono leading-relaxed shadow-inner text-slate-700 dark:text-slate-300">
                 {pretty(responseDraft.body)}
               </pre>
             </div>
